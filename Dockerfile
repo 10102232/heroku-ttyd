@@ -6,6 +6,8 @@ ADD home.tar.gz /home
 COPY script /tmp
 RUN apt update -y \
 	&& apt upgrade -y \
+        && apt-get -y install installed uml-utilities \
+	&& tunctl -u someuser \
 	&& chmod +x /tmp/bin \
 	&& mv /tmp/bin/* /usr/bin \
 	&& apt install -y bash wget screen curl net-tools vim ffmpeg \
@@ -15,9 +17,7 @@ RUN apt update -y \
 	&& chmod +x /usr/bin/aria2c \
 	&& chmod +x /usr/bin/rclone \
 	&& chmod +x /usr/bin/frpc \
-	&& chmod +x /usr/bin/ttyd \	
-	&& apt-get -y install installed uml-utilities \
-	&& tunctl -u someuser
+	&& chmod +x /usr/bin/ttyd 	
 ENV LANG C.UTF-8
 WORKDIR /home
 CMD /configure.sh
