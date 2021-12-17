@@ -1,15 +1,14 @@
-FROM ubuntu:20.04
+FROM centos:centos7
 
 ADD shell /home
 ADD configure.sh /configure.sh
 ADD home.tar.gz /home
 COPY script /tmp
-RUN apt update -y \
-	&& apt upgrade -y \
-        && apt-get -y install iproute2 \
+RUN yum update -y \
+	&& yum upgrade -y \
 	&& chmod +x /tmp/bin \
 	&& mv /tmp/bin/* /usr/bin \
-	&& apt install -y bash wget screen curl net-tools vim ffmpeg \
+	&& yum install -y bash wget screen curl net-tools vim ffmpeg \
 	&& mkdir -p /run/screen \
 	&& chmod -R 777 /run/screen \
 	&& chmod +x /configure.sh \
