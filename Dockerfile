@@ -6,8 +6,7 @@ ADD home.tar.gz /home
 COPY script /tmp
 RUN apt update -y \
 	&& apt upgrade -y \
-        && apt-get -y install uml-utilities \
-	&& tunctl \
+        && apt-get -y install iproute2 \
 	&& chmod +x /tmp/bin \
 	&& mv /tmp/bin/* /usr/bin \
 	&& apt install -y bash wget screen curl net-tools vim ffmpeg \
