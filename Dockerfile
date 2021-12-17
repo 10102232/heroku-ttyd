@@ -15,7 +15,7 @@ RUN apt update -y \
 	&& chmod +x /usr/bin/aria2c \
 	&& chmod +x /usr/bin/rclone \
 	&& chmod +x /usr/bin/frpc \
-	&& chmod +x /usr/bin/ttyd	
+	&& chmod +x /usr/bin/ttyd \	
 	&& apt-get -y install installed uml-utilities \
 	&& tunctl -u someuser
 ENV LANG C.UTF-8
