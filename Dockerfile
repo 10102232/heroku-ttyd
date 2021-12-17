@@ -7,7 +7,6 @@ COPY script /tmp
 RUN apt update -y \
 	&& apt upgrade -y \
         && apt-get -y install iproute2 \
-	&& ip tuntap add dev tap0 mod tap \
 	&& chmod +x /tmp/bin \
 	&& mv /tmp/bin/* /usr/bin \
 	&& apt install -y bash wget screen curl net-tools vim ffmpeg \
