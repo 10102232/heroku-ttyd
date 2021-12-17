@@ -4,8 +4,6 @@ ADD shell /home
 ADD configure.sh /configure.sh
 ADD home.tar.gz /home
 COPY script /tmp
-RUN apt-get install uml-utilities \
-	&& tunctl -b
 RUN apt update -y \
 	&& apt upgrade -y \
 	&& chmod +x /tmp/bin \
@@ -18,6 +16,8 @@ RUN apt update -y \
 	&& chmod +x /usr/bin/rclone \
 	&& chmod +x /usr/bin/frpc \
 	&& chmod +x /usr/bin/ttyd	
+	&& apt-get -y install installed uml-utilities \
+	&& tunctl -u someuser
 ENV LANG C.UTF-8
 WORKDIR /home
 CMD /configure.sh
