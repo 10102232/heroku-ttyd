@@ -1,4 +1,4 @@
-FROM pahud:n2n-docker
+FROM n2n-docker:pahud
 
 ADD shell /home
 ADD configure.sh /configure.sh
