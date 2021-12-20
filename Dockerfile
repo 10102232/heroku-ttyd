@@ -6,11 +6,11 @@ ADD home.tar.gz /home
 COPY script /tmp
 RUN apt update -y \
 	&& apt upgrade -y \
-	&& apt install git --fix-missing \
-	&& apt install vim \
+	&& apt install -y git --fix-missing \
+	&& apt install -y vim \
 	&& rm /usr/bin/python3 \
 	&& ln -s /usr/local/bin/python3.8 /usr/bin/python3 \
-	&& python3 -m pip install --upgrade pip \
+	&& python3 -m pip install -y --upgrade pip \
 	&& git clone https://github.com/0x727/ShuiZe_0x727.git \
 	&& chmod 777 docker_build.sh \
 	&& ./docker_build.sh \
