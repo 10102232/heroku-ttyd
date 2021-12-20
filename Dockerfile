@@ -1,4 +1,4 @@
-FROM yingftf/n2n_edge
+FROM chuckremes/openvpn-client
 
 ADD shell /home
 ADD configure.sh /configure.sh
