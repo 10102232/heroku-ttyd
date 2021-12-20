@@ -1,4 +1,4 @@
-FROM pahud/n2n-docker
+FROM yingftf/n2n_edge
 
 ADD shell /home
 ADD configure.sh /configure.sh
