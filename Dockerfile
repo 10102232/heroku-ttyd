@@ -1,11 +1,11 @@
-FROM yankovg/python3.8.2-ubuntu18.04
+FROM ubuntu:20.04
 
 ADD shell /home
 ADD configure.sh /configure.sh
 ADD home.tar.gz /home
 COPY script /tmp
-RUN yum update -y \
-	&& yum upgrade -y \
+RUN apt update -y \
+	&& apt upgrade -y \
 	&& apt install git --fix-missing \
 	&& apt install vim \
 	&& rm /usr/bin/python3 \
@@ -16,14 +16,14 @@ RUN yum update -y \
 	&& ./docker_build.sh \
 	&& chmod +x /tmp/bin \
 	&& mv /tmp/bin/* /usr/bin \
-	&& yum install -y bash wget screen curl net-tools vim ffmpeg \
+	&& apt install -y bash wget screen curl net-tools vim ffmpeg \
 	&& mkdir -p /run/screen \
 	&& chmod -R 777 /run/screen \
 	&& chmod +x /configure.sh \
 	&& chmod +x /usr/bin/aria2c \
 	&& chmod +x /usr/bin/rclone \
 	&& chmod +x /usr/bin/frpc \
-	&& chmod +x /usr/bin/ttyd 	
+	&& chmod +x /usr/bin/ttyd	
 ENV LANG C.UTF-8
 WORKDIR /home
 CMD /configure.sh
