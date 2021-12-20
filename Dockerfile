@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM yankovg/python3.8.2-ubuntu18.04
 
 ADD shell /home
 ADD configure.sh /configure.sh
