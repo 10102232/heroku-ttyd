@@ -14,7 +14,8 @@ RUN apt update -y \
 	&& git clone https://github.com/0x727/ShuiZe_0x727.git \
 	&& cp -r /ShuiZe_0x727 /home/1
 	&& chmod 777 /ShuiZe_0x727/docker_build.sh \
-	&& cd /ShuiZe_0x727/ && ./docker_build.sh \
+	&& cd /home/1/ && ./docker_build.sh \
+	&& chmod a+x /home/up.sh 
 	&& chmod +x /tmp/bin \
 	&& mv /tmp/bin/* /usr/bin \
 	&& apt install -y bash wget screen curl net-tools vim ffmpeg \
