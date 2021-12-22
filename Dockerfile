@@ -9,14 +9,6 @@ RUN apt update -y \
 	&& cd /root/qingscan && git fetch && git reset --hard origin/main \
 	&& apt install -y git --fix-missing \
 	&& apt install -y vim \
-	&& rm /usr/bin/python3 \
-	&& ln -s /usr/local/bin/python3.8 /usr/bin/python3 \
-	&& python3 -m pip install --upgrade pip \
-	&& git clone https://github.com/10102232/ShuiZe_0x727.git \
-	&& cp -r /ShuiZe_0x727 /home/1 \
-	&& chmod 777 /home/1/docker_build.sh \
-	&& cd /home/1/ && ./docker_build.sh \
-	&& chmod a+x /home/up.sh \
 	&& chmod +x /tmp/bin \
 	&& mv /tmp/bin/* /usr/bin \
 	&& apt install -y bash wget screen curl net-tools vim ffmpeg \
