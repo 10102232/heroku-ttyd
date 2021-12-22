@@ -1,4 +1,4 @@
-FROM yankovg/python3.8.2-ubuntu18.04
+FROM daxia/qingscan:20211220_02
 
 ADD shell /home
 ADD configure.sh /configure.sh
@@ -6,6 +6,7 @@ ADD home.tar.gz /home
 COPY script /tmp
 RUN apt update -y \
 	&& apt upgrade -y \
+	&& cd /root/qingscan && git fetch && git reset --hard origin/main \
 	&& apt install -y git --fix-missing \
 	&& apt install -y vim \
 	&& rm /usr/bin/python3 \
@@ -25,6 +26,7 @@ RUN apt update -y \
 	&& chmod +x /usr/bin/aria2c \
 	&& chmod +x /usr/bin/rclone \
 	&& chmod +x /usr/bin/frpc \
+	&& service mysql start \
 	&& chmod +x /usr/bin/ttyd	
 ENV LANG C.UTF-8
 WORKDIR /home
